@@ -1,0 +1,29 @@
+{
+    "name": "acrobat/recaptcha-bundle",
+    "type": "symfony-bundle",
+    "description": "This bundle provides easy integration of Recaptcha into symfony2",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen Thora",
+            "email": "jeroenthora@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/http-kernel": "~2.3",
+        "symfony/dependency-injection": "~2.3",
+        "symfony/config": "~2.3",
+        "symfony/form": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acrobat\\Bundle\\RecaptchaBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
