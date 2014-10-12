@@ -1,5 +1,7 @@
-AcrobatRecaptchaBundle [![Build Status](https://travis-ci.org/acrobat/RecaptchaBundle.svg?branch=master)](https://travis-ci.org/acrobat/RecaptchaBundle)
+AcrobatRecaptchaBundle
 ===============
+
+[![Build Status](https://travis-ci.org/acrobat/RecaptchaBundle.svg?branch=master)](https://travis-ci.org/acrobat/RecaptchaBundle) [![Latest Stable Version](https://poser.pugx.org/acrobat/recaptcha-bundle/v/stable.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle) [![Latest Unstable Version](https://poser.pugx.org/acrobat/recaptcha-bundle/v/unstable.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle) [![License](https://poser.pugx.org/acrobat/recaptcha-bundle/license.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle)
 
 This bundle provides reCAPTCHA integration with symfony2 forms.
 
