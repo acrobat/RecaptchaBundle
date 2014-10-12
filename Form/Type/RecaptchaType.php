@@ -34,6 +34,11 @@ class RecaptchaType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
+        $view->vars = array_replace($view->vars, array(
+            'recaptcha_enabled' => $this->recaptchaHelper->isEnabled(),
+            'recaptcha_ajax'    => $this->recaptchaHelper->useAjax(),
+        ));
+
         if (!$this->recaptchaHelper->isEnabled()) {
             return;
         }
@@ -50,11 +55,6 @@ class RecaptchaType extends AbstractType
                 'public_key' => $this->recaptchaHelper->getPublicKey(),
             ));
         }
-
-        $view->vars = array_replace($view->vars, array(
-            'recaptcha_enabled' => $this->recaptchaHelper->isEnabled(),
-            'recaptcha_ajax'    => $this->recaptchaHelper->useAjax(),
-        ));
     }
 
     /**
