@@ -1,4 +1,4 @@
-AcrobatRecaptchaBundle
+AcrobatRecaptchaBundle [![Build Status](https://travis-ci.org/acrobat/RecaptchaBundle.svg?branch=master)](https://travis-ci.org/acrobat/RecaptchaBundle)
 ===============
 
 This bundle provides reCAPTCHA integration with symfony2 forms.
