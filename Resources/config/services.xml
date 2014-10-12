@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Service -->
+        <service id="acrobat_recaptcha.helper.recaptcha" class="Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper">
+            <argument>%acrobat_recaptcha.public_key%</argument>
+            <argument>%acrobat_recaptcha.private_key%</argument>
+            <argument>%acrobat_recaptcha.locale%</argument>
+            <argument>%acrobat_recaptcha.enabled%</argument>
+            <argument>%acrobat_recaptcha.use_ajax%</argument>
+            <argument>%acrobat_recaptcha.use_https%</argument>
+        </service>
+
+        <!-- Form type -->
+        <service id="acrobat_recaptcha.form_type.recaptcha" class="Acrobat\Bundle\RecaptchaBundle\Form\Type\RecaptchaType">
+            <argument type="service" id="acrobat_recaptcha.helper.recaptcha"/>
+            <tag name="form.type" alias="acrobat_recaptcha" />
+        </service>
+
+        <!-- Validator -->
+        <service id="acrobat_recaptcha.validator.recaptcha" class="Acrobat\Bundle\RecaptchaBundle\Validator\Constraints\RecaptchaValidator">
+            <argument type="service" id="acrobat_recaptcha.helper.recaptcha" />
+            <argument type="service" id="request_stack" />
+            <tag name="validator.constraint_validator" alias="acrobat_recaptcha.validator.recaptcha" />
+        </service>
+    </services>
+</container>
