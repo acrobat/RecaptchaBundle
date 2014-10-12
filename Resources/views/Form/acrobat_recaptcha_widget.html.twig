@@ -1,4 +1,4 @@
-{% block acrobat_recaptcha_widget %}
+{% block recaptcha_widget %}
 {% spaceless %}
     {% if form.vars.recaptcha_enabled %}
         {% if not form.vars.recaptcha_ajax %}
@@ -25,4 +25,4 @@
         {% endif %}
     {% endif %}
 {% endspaceless %}
-{% endblock acrobat_recaptcha_widget %}
+{% endblock recaptcha_widget %}

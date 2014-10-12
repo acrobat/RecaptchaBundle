@@ -18,7 +18,7 @@
         <!-- Form type -->
         <service id="acrobat_recaptcha.form_type.recaptcha" class="Acrobat\Bundle\RecaptchaBundle\Form\Type\RecaptchaType">
             <argument type="service" id="acrobat_recaptcha.helper.recaptcha"/>
-            <tag name="form.type" alias="acrobat_recaptcha" />
+            <tag name="form.type" alias="recaptcha" />
         </service>
 
         <!-- Validator -->
