@@ -71,9 +71,9 @@ class RecaptchaType extends AbstractType
             'attr'          => array(
                 'options' => array(
                     'theme' => 'clean',
-                'lang'  => $this->recaptchaHelper->getLocale(),
-                ),
-        ),
+                    'lang'  => $this->recaptchaHelper->getLocale(),
+                    ),
+            ),
         ));
     }
 
