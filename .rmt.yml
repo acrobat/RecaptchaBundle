@@ -1,0 +1,20 @@
+_default:
+    vcs: git
+    version-generator:
+        semantic:
+            allow-label: true
+    version-persister:
+        name: vcs-tag
+        tag-prefix: "v"
+    prerequisites:
+        - working-copy-check
+        - display-last-changes
+    pre-release-actions:
+        composer-update:
+        changelog-update:
+            format: semantic
+            dump-commits: true
+            exclude-merge-commits: true
+        vcs-commit:
+            commit-message: "Released version %version%"
+    post-release-actions: [vcs-publish]
