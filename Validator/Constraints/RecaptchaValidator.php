@@ -51,12 +51,12 @@ class RecaptchaValidator extends ConstraintValidator
         $response   = $this->request->get('recaptcha_response_field');
 
         // Remote IP can not be empty
-        if (null == $remoteIp || $remoteIp == '') {
+        if (null === $remoteIp || $remoteIp === '') {
             throw new ValidatorException('For security reasons, you must pass the remote ip to reCAPTCHA');
         }
 
         // Discard spam submissions
-        if (null == $challenge || strlen($challenge) == 0 || null == $response || strlen($response) == 0) {
+        if (null === $challenge || strlen($challenge) === 0 || null === $response || strlen($response) === 0) {
             return false;
         }
 

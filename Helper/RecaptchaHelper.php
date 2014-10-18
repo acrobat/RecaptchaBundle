@@ -211,8 +211,10 @@ class RecaptchaHelper
         $httpRequest .= $req;
 
         $response = null;
-        if (!$fs = @fsockopen($host, $port, $errno, $errstr, 10)) {
-            throw new \Exception('Could not open socket');
+        try {
+            $fs = fsockopen($host, $port, $errno, $errstr, 10);
+        } catch(\Exception $e) {
+            throw new \Exception('Could not open socket. Errorcode: ' . $errno . '. Error: ' . $errstr);
         }
 
         fwrite($fs, $httpRequest);
