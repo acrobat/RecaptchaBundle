@@ -10,22 +10,22 @@ env:
   - SYMFONY_VERSION=2.5.*
 
 matrix:
-  allow_failures:
-    - env: SYMFONY_VERSION=dev-master
   include:
-    - php: 5.5
+    - php: 5.6
       env: SYMFONY_VERSION=2.3.*
-    - php: 5.5
+    - php: 5.6
       env: SYMFONY_VERSION=2.4.*
-    - php: 5.5
+    - php: 5.6
       env: SYMFONY_VERSION=2.5.*
-    - php: 5.5
-      env: SYMFONY_VERSION=dev-master
 
 #install: composer install --dev
 
 before_script:
-  - composer require symfony/http-kernel:${SYMFONY_VERSION} symfony/dependency-injection:${SYMFONY_VERSION} symfony/config:${SYMFONY_VERSION} symfony/form:${SYMFONY_VERSION} symfony/validator:${SYMFONY_VERSION} --no-update
-  - composer update symfony/http-kernel symfony/dependency-injection symfony/config symfony/form symfony/validator
+  - composer require symfony/http-kernel:${SYMFONY_VERSION} symfony/dependency-injection:${SYMFONY_VERSION} symfony/config:${SYMFONY_VERSION} symfony/form:${SYMFONY_VERSION} symfony/validator:${SYMFONY_VERSION} symfony/debug:${SYMFONY_VERSION} symfony/http-foundation:${SYMFONY_VERSION} symfony/event-dispatcher:${SYMFONY_VERSION} symfony/filesystem:${SYMFONY_VERSION} symfony/property-access:${SYMFONY_VERSION} symfony/yaml:${SYMFONY_VERSION} symfony/options-resolver:${SYMFONY_VERSION} symfony/intl:${SYMFONY_VERSION} symfony/translation:${SYMFONY_VERSION} --no-update
+  - composer update
 
 script: phpunit --coverage-text
+
+cache:
+  directories:
+    - $COMPOSER_CACHE_DIR
