@@ -6,6 +6,26 @@ php:
   - 5.5
   - 5.6
 
-install: composer install --dev
+env:
+  - SYMFONY_VERSION=2.5.*
+
+matrix:
+  allow_failures:
+    - env: SYMFONY_VERSION=dev-master
+  include:
+    - php: 5.5
+      env: SYMFONY_VERSION=2.3.*
+    - php: 5.5
+      env: SYMFONY_VERSION=2.4.*
+    - php: 5.5
+      env: SYMFONY_VERSION=2.5.*
+    - php: 5.5
+      env: SYMFONY_VERSION=dev-master
+
+#install: composer install --dev
+
+before_script:
+  - composer require symfony/http-kernel:${SYMFONY_VERSION} symfony/dependency-injection:${SYMFONY_VERSION} symfony/config:${SYMFONY_VERSION} symfony/form:${SYMFONY_VERSION} symfony/validator:${SYMFONY_VERSION} --no-update
+  - composer update symfony/http-kernel symfony/dependency-injection symfony/config symfony/form symfony/validator
 
 script: phpunit --coverage-text
