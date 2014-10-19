@@ -11,8 +11,16 @@ This bundle provides reCAPTCHA integration with symfony2 forms.
 
 To install AcrobatRecaptchaBundle with composer just run the following command:
 
+#### Symfony 2.3 installation
+
 ```bash
-$ php composer.phar require acrobat/recaptcha-bundle
+$ php composer.phar require acrobat/recaptcha-bundle:~1.0
+```
+
+#### Symfony >= 2.4 installation
+
+```bash
+$ php composer.phar require acrobat/recaptcha-bundle:dev-master
 ```
 
 This will add the config line to the `composer.json` and installs the latest stable version of this bundle.
