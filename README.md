@@ -74,8 +74,13 @@ Use https for recaptcha connections
 
 acrobat_recaptcha:
     // ...
-    https: true
+    https: auto
 ```
+
+Possible values:
+- on   : always use https
+- off  : always use http
+- auto : let the browser decide what protocol to use, based on the original request protocol (**default**)
 
 ## Basic Usage
 

@@ -27,7 +27,12 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('locale')->defaultValue('%kernel.default_locale%')->end()
                 ->scalarNode('enabled')->defaultTrue()->end()
                 ->scalarNode('use_ajax')->defaultFalse()->end()
-                ->scalarNode('use_https')->defaultTrue()->end()
+                ->scalarNode('https')
+                    ->defaultValue('auto')
+                    ->validate()
+                    ->ifNotInArray(array('on', 'off', 'auto'))
+                    ->thenInvalid('Invalid https setting "%s"')
+                    ->end()
             ->end();
 
         return $treeBuilder;

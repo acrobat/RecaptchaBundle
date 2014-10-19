@@ -57,6 +57,8 @@ class RecaptchaValidator extends ConstraintValidator
 
         // Discard spam submissions
         if (null === $challenge || strlen($challenge) === 0 || null === $response || strlen($response) === 0) {
+            $this->context->addViolation($constraint->message);
+
             return false;
         }
 

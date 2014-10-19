@@ -12,7 +12,7 @@
             <argument>%acrobat_recaptcha.locale%</argument>
             <argument>%acrobat_recaptcha.enabled%</argument>
             <argument>%acrobat_recaptcha.use_ajax%</argument>
-            <argument>%acrobat_recaptcha.use_https%</argument>
+            <argument>%acrobat_recaptcha.https%</argument>
         </service>
 
         <!-- Form type -->

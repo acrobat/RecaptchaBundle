@@ -22,12 +22,18 @@ class RecaptchaHelperTest extends \PHPUnit_Framework_TestCase
     private $helperWithoutHttps;
 
     /**
+     * @var \Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper
+     */
+    private $helperWithAutoHttps;
+
+    /**
      * Set up
      */
     public function setUp()
     {
-        $this->helperWithHttps = new RecaptchaHelper('aaa', 'bbb', 'en', true, false, true);
-        $this->helperWithoutHttps = new RecaptchaHelper('aaa', 'bbb', 'en', true, false, false);
+        $this->helperWithHttps = new RecaptchaHelper('aaa', 'bbb', 'en', true, false, 'on');
+        $this->helperWithoutHttps = new RecaptchaHelper('aaa', 'bbb', 'en', true, false, 'off');
+        $this->helperWithAutoHttps = new RecaptchaHelper('aaa', 'bbb', 'en', true, false, 'auto');
     }
 
     /**
@@ -49,6 +55,17 @@ class RecaptchaHelperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             'http://www.google.com/recaptcha/api/challenge?k=aaa',
             $this->helperWithoutHttps->getChallengeUrl()
+        );
+    }
+
+    /**
+     * @covers Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper::getChallengeUrl()
+     */
+    public function testGetChallengeUrlWithAutoHttps()
+    {
+        $this->assertEquals(
+            '//www.google.com/recaptcha/api/challenge?k=aaa',
+            $this->helperWithAutoHttps->getChallengeUrl()
         );
     }
 
@@ -75,6 +92,17 @@ class RecaptchaHelperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper::getNoScriptUrl()
+     */
+    public function testNoScriptUrlWithAutoHttps()
+    {
+        $this->assertEquals(
+            '//www.google.com/recaptcha/api/noscript?k=aaa',
+            $this->helperWithAutoHttps->getNoScriptUrl()
+        );
+    }
+
+    /**
      * @covers Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper::getAjaxUrl()
      */
     public function testGetAjaxUrlWithHttps()
@@ -97,12 +125,24 @@ class RecaptchaHelperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper::getAjaxUrl()
+     */
+    public function testGetAjaxUrlWithAutoHttps()
+    {
+        $this->assertEquals(
+            '//www.google.com/recaptcha/api/js/recaptcha_ajax.js',
+            $this->helperWithAutoHttps->getAjaxUrl()
+        );
+    }
+
+    /**
      * @covers Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper::getPublicKey()
      */
     public function testGetPublicKey()
     {
         $this->assertEquals('aaa', $this->helperWithoutHttps->getPublicKey());
     }
+
     /**
      * @covers Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper::getPrivateKey()
      */
@@ -142,5 +182,7 @@ class RecaptchaHelperTest extends \PHPUnit_Framework_TestCase
     {
         unset($this->helperWithoutHttps);
         unset($this->helperWithHttps);
+        unset($this->helperWithAutoHttps);
+
     }
 }

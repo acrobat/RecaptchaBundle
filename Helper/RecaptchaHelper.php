@@ -44,9 +44,9 @@ class RecaptchaHelper
     private $ajax;
 
     /**
-     * @var boolean
+     * @var string
      */
-    private $https;
+    private $httpsMode;
 
     /**
      * @param string  $publicKey
@@ -54,16 +54,16 @@ class RecaptchaHelper
      * @param string  $locale
      * @param boolean $enabled
      * @param boolean $ajax
-     * @param boolean $https
+     * @param string  $httpsMode
      */
-    public function __construct($publicKey, $privateKey, $locale, $enabled, $ajax, $https)
+    public function __construct($publicKey, $privateKey, $locale, $enabled, $ajax, $httpsMode)
     {
         $this->publicKey = $publicKey;
         $this->privateKey = $privateKey;
         $this->locale = $locale;
         $this->enabled = $enabled;
         $this->ajax = $ajax;
-        $this->https = $https;
+        $this->httpsMode = $httpsMode;
     }
 
     /**
@@ -73,8 +73,8 @@ class RecaptchaHelper
      */
     public function getChallengeUrl()
     {
-        return vsprintf('%s://%s/challenge?k=%s', array(
-            ($this->https ? 'https' : 'http'),
+        return vsprintf('%s%s/challenge?k=%s', array(
+            $this->getProtocol($this->httpsMode),
             self::RECAPTCHA_API_URL,
             $this->publicKey
         ));
@@ -87,8 +87,8 @@ class RecaptchaHelper
      */
     public function getNoScriptUrl()
     {
-        return vsprintf('%s://%s/noscript?k=%s', array(
-            ($this->https ? 'https' : 'http'),
+        return vsprintf('%s%s/noscript?k=%s', array(
+            $this->getProtocol($this->httpsMode),
             self::RECAPTCHA_API_URL,
             $this->publicKey
         ));
@@ -101,8 +101,8 @@ class RecaptchaHelper
      */
     public function getAjaxUrl()
     {
-        return vsprintf('%s://%s', array(
-            ($this->https ? 'https' : 'http'),
+        return vsprintf('%s%s', array(
+            $this->getProtocol($this->httpsMode),
             self::RECAPTCHA_API_AJAX_URL,
         ));
     }
@@ -246,5 +246,17 @@ class RecaptchaHelper
 
         // Cut the last '&'
         return substr($req, 0, strlen($req) - 1);
+    }
+
+    private function getProtocol($httpsMode)
+    {
+        switch ($httpsMode) {
+            case 'on':
+                return 'https://';
+            case 'off':
+                return 'http://';
+            case 'auto':
+                return '//';
+        }
     }
 }
