@@ -3,7 +3,7 @@
 namespace Acrobat\Bundle\RecaptchaBundle\Validator\Constraints;
 
 use Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ValidatorException;
@@ -21,18 +21,18 @@ class RecaptchaValidator extends ConstraintValidator
     private $recaptchaHelper;
 
     /**
-     * @var \Symfony\Component\HttpFoundation\Request
+     * @var \Symfony\Component\HttpFoundation\RequestStack
      */
-    private $request;
+    private $requestStack;
 
     /**
      * @param \Acrobat\Bundle\RecaptchaBundle\Helper\RecaptchaHelper $recaptchaHelper
-     * @param \Symfony\Component\HttpFoundation\Request              $request
+     * @param \Symfony\Component\HttpFoundation\RequestStack         $requestStack
      */
-    public function __construct(RecaptchaHelper $recaptchaHelper, Request $request)
+    public function __construct(RecaptchaHelper $recaptchaHelper, RequestStack $requestStack)
     {
         $this->recaptchaHelper = $recaptchaHelper;
-        $this->request = $request;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -45,10 +45,12 @@ class RecaptchaValidator extends ConstraintValidator
             return true;
         }
 
+        $masterRequest = $this->requestStack->getMasterRequest();
+
         // Retrieve all recaptcha variables
-        $remoteIp   = $this->request->server->get('REMOTE_ADDR');
-        $challenge  = $this->request->get('recaptcha_challenge_field');
-        $response   = $this->request->get('recaptcha_response_field');
+        $remoteIp   = $masterRequest->server->get('REMOTE_ADDR');
+        $challenge  = $masterRequest->get('recaptcha_challenge_field');
+        $response   = $masterRequest->get('recaptcha_response_field');
 
         // Remote IP can not be empty
         if (null === $remoteIp || $remoteIp === '') {

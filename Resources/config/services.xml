@@ -22,9 +22,9 @@
         </service>
 
         <!-- Validator -->
-        <service id="acrobat_recaptcha.validator.recaptcha" class="Acrobat\Bundle\RecaptchaBundle\Validator\Constraints\RecaptchaValidator" scope="request">
+        <service id="acrobat_recaptcha.validator.recaptcha" class="Acrobat\Bundle\RecaptchaBundle\Validator\Constraints\RecaptchaValidator">
             <argument type="service" id="acrobat_recaptcha.helper.recaptcha" />
-            <argument type="service" id="request" />
+            <argument type="service" id="request_stack" />
             <tag name="validator.constraint_validator" alias="acrobat_recaptcha.validator.recaptcha" />
         </service>
     </services>
