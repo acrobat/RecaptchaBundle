@@ -20,8 +20,10 @@ $ php composer.phar require acrobat/recaptcha-bundle:~1.0
 #### Symfony >= 2.4 installation
 
 ```bash
-$ php composer.phar require acrobat/recaptcha-bundle:dev-master
+$ php composer.phar require acrobat/recaptcha-bundle:~2.0
 ```
+
+**Note**: In RecaptchaBundle 2.0 we dropped support for symfony 2.3, see issue [#4](https://github.com/acrobat/RecaptchaBundle/issues/4). Both versions 1.0 and 2.0 will be maintained.
 
 This will add the config line to the `composer.json` and installs the latest stable version of this bundle.
 
