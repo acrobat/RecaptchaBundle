@@ -1,4 +1,15 @@
 
+VERSION 1  1.0 STABLE RELEASE
+=============================
+
+   Version 1.0 - 1.0 stable release
+      19/10/2014 10:56  1.0.0  initial release
+         ffe6646 Implemented new expanded https setting, fixes #6
+         0a376f9 Fixed file endings
+         4ef9203 Fixed some code issues
+         58c0a1d Fixed php syntax errors
+         8b4fa8a Bumped composer branch alias
+
 VERSION 0  FIRST MINOR STABLE RELEASE
 =====================================
 
