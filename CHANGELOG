@@ -1,4 +1,15 @@
 
+VERSION 2  2.0 STABLE RELEASE
+=============================
+
+   Version 2.0 - 2.0 stable release
+      19/10/2014 11:24  2.0.0  initial release
+         96174af Fixed installation docs for RecaptchaBundle 2.0
+         9dee510 Replaced request service with request stack, fixes #4
+         6666917 Changed installation docs for symfony 2.3 and 2.4+
+         5755bdd Bumped composer branch alias
+         d6bbbac Bumped composer branch alias
+
 VERSION 1  1.0 STABLE RELEASE
 =============================
 
