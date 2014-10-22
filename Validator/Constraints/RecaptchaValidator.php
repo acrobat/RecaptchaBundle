@@ -45,12 +45,12 @@ class RecaptchaValidator extends ConstraintValidator
             return true;
         }
 
-        $masterRequest = $this->requestStack->getMasterRequest();
+        $currentRequest = $this->requestStack->getCurrentRequest();
 
         // Retrieve all recaptcha variables
-        $remoteIp   = $masterRequest->server->get('REMOTE_ADDR');
-        $challenge  = $masterRequest->get('recaptcha_challenge_field');
-        $response   = $masterRequest->get('recaptcha_response_field');
+        $remoteIp   = $currentRequest->getClientIp();
+        $challenge  = $currentRequest->get('recaptcha_challenge_field');
+        $response   = $currentRequest->get('recaptcha_response_field');
 
         // Remote IP can not be empty
         if (null === $remoteIp || $remoteIp === '') {
