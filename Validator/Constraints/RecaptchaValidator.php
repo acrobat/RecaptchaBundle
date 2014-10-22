@@ -46,7 +46,7 @@ class RecaptchaValidator extends ConstraintValidator
         }
 
         // Retrieve all recaptcha variables
-        $remoteIp   = $this->request->server->get('REMOTE_ADDR');
+        $remoteIp   = $this->request->getClientIp();
         $challenge  = $this->request->get('recaptcha_challenge_field');
         $response   = $this->request->get('recaptcha_response_field');
 
