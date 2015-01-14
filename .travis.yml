@@ -7,22 +7,14 @@ php:
   - 5.6
 
 env:
-  - SYMFONY_VERSION=2.5.*
-
-matrix:
-  include:
-    - php: 5.6
-      env: SYMFONY_VERSION=2.3.*
-    - php: 5.6
-      env: SYMFONY_VERSION=2.4.*
-    - php: 5.6
-      env: SYMFONY_VERSION=2.5.*
+  matrix:
+    - PREFER_LOWEST="--prefer-lowest"
+    - PREFER_LOWEST=""
 
 #install: composer install --dev
 
 before_script:
-  - composer require symfony/http-kernel:${SYMFONY_VERSION} symfony/dependency-injection:${SYMFONY_VERSION} symfony/config:${SYMFONY_VERSION} symfony/form:${SYMFONY_VERSION} symfony/validator:${SYMFONY_VERSION} symfony/debug:${SYMFONY_VERSION} symfony/http-foundation:${SYMFONY_VERSION} symfony/event-dispatcher:${SYMFONY_VERSION} symfony/filesystem:${SYMFONY_VERSION} symfony/property-access:${SYMFONY_VERSION} symfony/yaml:${SYMFONY_VERSION} symfony/options-resolver:${SYMFONY_VERSION} symfony/intl:${SYMFONY_VERSION} symfony/translation:${SYMFONY_VERSION} --no-update
-  - composer update
+  - composer update --prefer-source $PREFER_LOWEST
 
 script: phpunit --coverage-text
 
