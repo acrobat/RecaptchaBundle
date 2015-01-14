@@ -12,6 +12,8 @@ env:
     - PREFER_LOWEST=""
 
 #install: composer install --dev
+before_install:
+    - composer self-update
 
 before_script:
   - composer update --prefer-source $PREFER_LOWEST
