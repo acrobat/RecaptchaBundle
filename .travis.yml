@@ -17,7 +17,7 @@ before_install:
     - composer self-update
 
 before_script:
-  - composer update --prefer-source $PREFER_LOWEST
+  - composer update --prefer-source --prefer-stable $PREFER_LOWEST
 
 script: phpunit --coverage-text
 
