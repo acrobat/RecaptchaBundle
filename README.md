@@ -1,7 +1,7 @@
 AcrobatRecaptchaBundle
 ===============
 
-[![Build Status](https://travis-ci.org/acrobat/RecaptchaBundle.svg?branch=master)](https://travis-ci.org/acrobat/RecaptchaBundle) [![Latest Stable Version](https://poser.pugx.org/acrobat/recaptcha-bundle/v/stable.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle) [![Latest Unstable Version](https://poser.pugx.org/acrobat/recaptcha-bundle/v/unstable.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle) [![License](https://poser.pugx.org/acrobat/recaptcha-bundle/license.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/ea382ea3-ba68-40e3-84b0-e6c6866552ec/mini.png)](https://insight.sensiolabs.com/projects/ea382ea3-ba68-40e3-84b0-e6c6866552ec) [![Build Status](https://travis-ci.org/acrobat/RecaptchaBundle.svg?branch=master)](https://travis-ci.org/acrobat/RecaptchaBundle) [![Latest Stable Version](https://poser.pugx.org/acrobat/recaptcha-bundle/v/stable.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle) [![Latest Unstable Version](https://poser.pugx.org/acrobat/recaptcha-bundle/v/unstable.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle) [![License](https://poser.pugx.org/acrobat/recaptcha-bundle/license.svg)](https://packagist.org/packages/acrobat/recaptcha-bundle)
 
 This bundle provides reCAPTCHA integration with symfony2 forms.
 
