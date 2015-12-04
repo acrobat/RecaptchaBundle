@@ -23,7 +23,10 @@
     "autoload": {
         "psr-4": {
             "Acrobat\\Bundle\\RecaptchaBundle\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "**/Tests/"
+        ]
     },
     "extra": {
         "branch-alias": {
