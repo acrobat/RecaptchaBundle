@@ -7,6 +7,7 @@ use Acrobat\Bundle\RecaptchaBundle\Validator\Constraints;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -62,6 +63,11 @@ class RecaptchaType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $this->configureOptions($resolver);
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'compound'      => false,
             'public_key'    => null,
@@ -72,7 +78,7 @@ class RecaptchaType extends AbstractType
                 'options' => array(
                     'theme' => 'clean',
                     'lang'  => $this->recaptchaHelper->getLocale(),
-                    ),
+                ),
             ),
         ));
     }
